@@ -1,0 +1,20 @@
+library 'reference-pipeline'
+library 'AppServiceAccount'
+library 'CICD-FOSS-V2'
+
+
+defaultPipeline_JAVA17(
+    application: 'cord-cons-unit-view-autobahn'
+    stage[
+
+        build : 'standard'
+        test : 'standard'
+        codeQuality : ['createNexusIQFolder', 'fortify', 'nexusIQAnalysis','submitFossApproval'],
+        nexus :'standard'
+        tag : 'standardGithub'
+        deploy : 'pcf',
+        post : [always: 'postToTeams']
+    ],
+
+    pipelineFlow: 'esiExecutableFlow'
+)
