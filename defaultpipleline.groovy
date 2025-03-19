@@ -3,7 +3,7 @@ library 'reference-pipeline'
 library 'AppServiceAccount'
 
 
-import untilites.*;
+import utilites.*;
 
 def call(Map entryConfig){
 	def globalConfig = new Configuration()
